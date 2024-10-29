@@ -35,7 +35,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 let mySprite: Sprite = null
-game.showLongText("Seja bem vindo, o objetivo é coletar as orbs e chegar na pontuação máxima antes que o tempo acabe.", DialogLayout.Center)
+game.showLongText("Seja bem vindo. O objetivo é coletar as orbs e chegar na pontuação máxima antes que o tempo acabe.", DialogLayout.Center)
 game.showLongText("E os Baús dão vida", DialogLayout.Center)
 tiles.setCurrentTilemap(tilemap`level2`)
 mySprite = sprites.create(img`
