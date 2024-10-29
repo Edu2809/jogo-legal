@@ -1,12 +1,21 @@
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
         mySprite.vy += -145
     }
 })
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleBlueCrystal, function (sprite, location) {
     tiles.setTileAt(location, sprites.dungeon.floorLight0)
     info.changeScoreBy(100)
-    if (info.score() == 1200) {
+    if (info.score() == 1000) {
         game.gameOver(true)
     } else {
     	
@@ -16,11 +25,18 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     tiles.setTileAt(location, sprites.dungeon.chestOpen)
     info.changeLifeBy(100)
 })
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-4)
+    info.changeLifeBy(-1)
+})
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+	
 })
 let mySprite: Sprite = null
 game.showLongText("Seja bem vindo, o objetivo é coletar as orbs e chegar na pontuação máxima antes que o tempo acabe.", DialogLayout.Center)
+game.showLongText("E os Baús dão vida", DialogLayout.Center)
 tiles.setCurrentTilemap(tilemap`level2`)
 mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
@@ -102,6 +118,7 @@ let mySprite4 = sprites.create(img`
     ........................
     ........................
     `, SpriteKind.Enemy)
+let direcaotiro = 0
 controller.moveSprite(mySprite, 100, 100)
 mySprite2.follow(mySprite, 70)
 mySprite3.follow(mySprite, 70)
@@ -110,6 +127,7 @@ tiles.placeOnTile(mySprite2, tiles.getTileLocation(27, 3))
 tiles.placeOnTile(mySprite3, tiles.getTileLocation(30, 17))
 tiles.placeOnTile(mySprite4, tiles.getTileLocation(2, 30))
 tiles.placeOnRandomTile(mySprite2, sprites.dungeon.floorLight1)
+tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 2))
 mySprite.setStayInScreen(true)
 scene.cameraFollowSprite(mySprite)
 animation.runImageAnimation(
@@ -440,5 +458,5 @@ mySprite4,
 500,
 true
 )
-info.startCountdown(40)
+info.startCountdown(70)
 info.setScore(0)
